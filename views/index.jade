@@ -1,9 +1,29 @@
 extends base
 
 block content
-	nav(class='navbar navbar-custom navbar-static-top', role='navigation')
+	header
 		div(class='container')
-			div(class='nabbar-header')
-				a(class='navbar-brand' href='#')= "Tennis Graphs"
-	h1= title
-	p Welcome to #{title}
+			h1= title
+	div(class='container')
+		div(class='row')
+			div(class='col-md-6 overview-square-outer')
+				div(class='overview-square-inner')
+					div(class="scores")
+						h4='Roger Federer'
+						table(class='score-table')
+							tr
+								td=1
+								td(class='win-cell')=6
+								td=3
+								td(class='result-cell')=1
+							tr
+								td(class='win-cell')=6
+								td=2
+								td(class='win-cell')=6
+								td(class='result-cell')=2
+						h4='Milos Raonic'
+					div(class="buttons")
+						a(class="button")="Win Probability"
+
+			div(class='col-md-6 overview-square-outer')
+				div(class='overview-square-inner')
