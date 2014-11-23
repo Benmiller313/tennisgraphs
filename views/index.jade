@@ -6,28 +6,38 @@ block content
 			h1= title
 	div(class='container')
 		while matches.length > 0
-			div(class='row')
-				- var match_pair = matches.splice(0,2);
-				each match in match_pair
-					div(class='col-md-6 overview-square-outer')
-						div(class='overview-square-inner')
-							div(class="scores")
-								h4=match.away_player
-								table(class='score-table')
-									tr
-										each set in match.scoring
-											if (set.away_wins > set.home_wins)
-												td(class='win-cell')=set.away_wins
-											else
-												td=set.away_wins
-										td(class='result-cell')= match.result.away_sets
-									tr
-										each set in match.scoring
-											if (set.home_wins > set.away_wins)
-												td(class='win-cell')=set.home_wins
-											else
-												td=set.home_wins
-										td(class='result-cell')= match.result.home_sets
-								h4=match.home_player
-							div(class="buttons")
-								a(class="button")="Win Probability"
+			div
+				div(class='row expansion-pane')
+
+				div(class='row')
+					- var match_pair = matches.splice(0,2);
+					each match in match_pair
+						div(class='col-md-6 overview-square-outer')
+							div(class='overview-square-inner', id=match.match_code)
+								div(class="scores")
+									h4=match.away_player
+									table(class='score-table')
+										tr
+											each set in match.scoring
+												if (set.away_wins > set.home_wins)
+													td(class='win-cell')=set.away_wins
+												else
+													td=set.away_wins
+											td(class='result-cell')= match.result.away_sets
+										tr
+											each set in match.scoring
+												if (set.home_wins > set.away_wins)
+													td(class='win-cell')=set.home_wins
+												else
+													td=set.home_wins
+											td(class='result-cell')= match.result.home_sets
+									h4=match.home_player
+								div(class="buttons")
+									a(class="button show-wpa")="Win Probability"
+
+	script(type='text/javascript', src='javascripts/index.js')
+	script.
+
+		window.addEventListener("hashchange", indexHashRouter)
+		$('.overview-square-inner .show-wpa').click(function(){
+		});
