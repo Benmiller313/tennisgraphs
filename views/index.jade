@@ -33,11 +33,12 @@ block content
 											td(class='result-cell')= match.result.home_sets
 									h4=match.home_player
 								div(class="buttons")
-									a(class="button show-wpa")="Win Probability"
+									a(class="button show-wpa", href='#matchdetail/'+match.match_code)="Win Probability"
 
-	script(type='text/javascript', src='javascripts/index.js')
+	//script(type='text/javascript', src='javascripts/index.js')
 	script.
-
-		window.addEventListener("hashchange", indexHashRouter)
+		window.addEventListener("hashchange", function(){
+			alert('Hash Changed');
+		});
 		$('.overview-square-inner .show-wpa').click(function(){
 		});
